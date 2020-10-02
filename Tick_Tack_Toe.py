@@ -4,7 +4,7 @@ Tick Tack Toe Board
 10/1/20
 '''
 
-print("Welcome to tick tak toe!")
+print("Welcome to tick tack toe!")
 first_row = ['  |   |  ']
 second_row = ['_   _   _']
 
