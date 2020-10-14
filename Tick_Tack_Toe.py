@@ -11,18 +11,20 @@ Tick Tack Toe Board
 # Place first entry on the board
 # Gameplay
 # We need to do an insertion of an x or an o into an array
-# My_board_array [4] = O
 # Check for a winning or tie condition
 # Outcome message
 # Ascii art
 # Would you like to play again message if y refresh if n exit
 
+win_condition = False
 
 print("Welcome to tick tack toe!")
+#Why do we need multiple players
 num_of_players = input("Choose the number of players. Valid inputs are: 0, 1, or 2. ")
 print(f'You have chosen {num_of_players} players.')
 player1_x_or_o = input("Chose X or O. ")
 upper_case_x_o = player1_x_or_o.upper()
+#What happens if they don't click X or O
 print(f'You have chosen {upper_case_x_o}.')
 
 #The code is telling the players if they are going to be X's or O's based on the first input.
@@ -47,7 +49,7 @@ def player_1_turn():
     int_player1_col = int(player1_col)
 
 
-    print(f'Player 1 picked {int_player1_row} and {int_player1_col}')
+    print(f'Player 1 picked row {int_player1_row} and column {int_player1_col}')
 
     board[int_player1_row] [int_player1_col] = player1_x_or_o
 
@@ -58,38 +60,45 @@ def player_2_turn():
     int_player2_row = int(player2_row)
     int_player2_col = int(player2_col)
 
-    print(f'Player 2 picked {int_player2_row} and {int_player2_col}')
+    print(f'Player 2 picked row {int_player2_row} and column {int_player2_col}')
     board[int_player2_row] [int_player2_col] = player2_x_or_o
 
 
-print(board[2][1])
 
 def didIWin():
+    global win_condition
+    #How do you make a tie condition
     #Row 0 Across
-    if board[0][0] == board[0][1] and board[0][0] == board[0][2]:
-        print(board[0][0], "is the winner! " )
-    #Column 0 Down
-    elif board[0][0] == board[1][0] and board[0][0] == board[2][0]:
-        print(board[0][0], "is the winner! ")
-    #Row 1 Across
-    elif board[1][0] == board[1][1] and board[1][0] == board[1][2]:
-        print(board[1][0], "is the winner!")
-    #Column 1 Down
-    # elif board[0][1] == board[1][1] and board[0][1] == board[2][1]:
-    #     print(board[0][1], "is the winner!")
-    #Row 2 Across
-    # elif board[2][0] == board[2][1] and board[2][0] == board[2][2]:
-    #     print(board[2][0], "is the winner!")
-    #Column 2 Down
-    # elif board[0][2] == board[1][2] and board[0][2] == board[2][2]:
-    #     print(board[0][2], "is the winner!")
-    #Diagonal Starting with Row and Column 0
-    # elif board[0][0] == board[1][1] and board[0][0] == board[2][2]:
-    #     print(board[0][0], "is the winner!")
-    #Diagonal Starting Row 0 Column 2
-    # elif board[0][2] == board[1][1] and board[0][2] == board[2][0]:
-    #     print(board[0][2], "is the winner!")
+    if board[0][0] == board[0][1] and board[0][0] == board[0][2] and board[0][0] != " ":
+        win_condition = True
 
+    #Column 0 Down
+    elif board[0][0] == board[1][0] and board[0][0] == board[2][0] and board[0][0] != " ":
+        win_condition = True
+
+    #Row 1 Across
+    elif board[1][0] == board[1][1] and board[1][0] == board[1][2] and board[1][0] != " ":
+        win_condition = True
+
+    #Column 1 Down
+    elif board[0][1] == board[1][1] and board[0][1] == board[2][1] and board[0][1] != " ":
+        win_condition = True
+
+    #Row 2 Across
+    elif board[2][0] == board[2][1] and board[2][0] == board[2][2] and board[2][0] != " ":
+        win_condition = True
+
+    #Column 2 Down
+    elif board[0][2] == board[1][2] and board[0][2] == board[2][2] and board[0][2] != " ":
+        win_condition = True
+
+    #Diagonal Starting with Row and Column 0
+    elif board[0][0] == board[1][1] and board[0][0] == board[2][2] and board[0][0] != " ":
+        win_condition = True
+
+    #Diagonal Starting Row 0 Column 2
+    elif board[0][2] == board[1][1] and board[0][2] == board[2][0] and board[0][2] != " ":
+        win_condition = True
     else:
         print("No one has one yet, keep playing.")
 
@@ -106,14 +115,40 @@ def drawBoard():
        -------
     ''')
 
-def game_play():
+# def game_play():
+#     player_1_turn()
+#     drawBoard()
+#     didIWin()
+#     player_2_turn()
+#     drawBoard()
+#     didIWin()
+#How do I make the win condition
+while win_condition == False:
     player_1_turn()
     drawBoard()
     didIWin()
+    if win_condition == True:
+        print("Congratulations, Player 1 won the Game!")
+        print("♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪")
+        play_again_or_end = input("Type y to play again, or type n to stop.")
+        if play_again_or_end == "y" or "Y":
+            win_condition = False
+            player_1_turn()
+        else:
+            print("Game over!")
+            exit()
     player_2_turn()
     drawBoard()
     didIWin()
-
-while True:
-    game_play()
+    if win_condition == True:
+        print("Congratulations, Player 2 won the Game")
+        print("♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪")
+        play_again_or_end = input("Type y to play again, or type n to stop.")
+        if play_again_or_end == "n" or "o":
+            print("hi")
+        else:
+            print("Game over!")
+            exit()
+# while True:
+#     game_play()
 
