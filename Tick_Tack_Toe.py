@@ -3,25 +3,12 @@ Asher Forman
 Tick Tack Toe
 10/1/20
 '''
-# Welcome Code
-# draw board
-# Choose number of players 0, 2
-# Choose x or o
-# Pick who goes first
-# Place first entry on the board
-# Gameplay
-# We need to do an insertion of an x or an o into an array
-# Check for a winning or tie condition
-# Outcome message
-# Ascii art
-# Would you like to play again message if y refresh if n exit
 
 win_condition = False
 
+#Welcome code
 print("Welcome to tick tack toe!")
-#How do I make the code for 0 or 1 players.
 num_of_players = input("Choose the number of players. Valid inputs are: 0, 1, or 2. ")
-#What do I do if there is only 1 player?
 print(f'You have chosen {num_of_players} players.')
 player1_x_or_o = input("Chose X or O. ")
 upper_case_x_o = player1_x_or_o.upper()
@@ -74,7 +61,6 @@ def player_2_turn():
     board[int_player2_row][int_player2_col] = player2_x_or_o
 
 
-#How do I clear the board when I want to play again?
 def new_board():
     global board
     board = [
@@ -116,9 +102,6 @@ def didIWin():
     #Diagonal Starting Row 0 Column 2
     elif board[0][2] == board[1][1] and board[0][2] == board[2][0] and board[0][2] != " ":
         win_condition = True
-    #How do I make a tie condition?
-    # elif board[0][0] == "X" or "O" and board[0][1] == "X" or "O" and board[0][2] == "X" or "O" and board[1][0] == "X" or "O" and board[1][1] == "X" or "O" and board[1][2] == "X" or "O" and board[2][0] == "X" or "O" and board[2][1] == "X" or "O" and board[2][2] == "X" or "O":
-    #     print("Tie Game!")
     else:
         print("No one has one yet, keep playing.")
 
@@ -136,7 +119,7 @@ def drawBoard():
     ''')
 
 
-
+#Gameplay code
 def game_play():
     global win_condition
     while win_condition == False:
@@ -145,7 +128,7 @@ def game_play():
         didIWin()
         if win_condition == True:
             print("Congratulations, Player 1 won the Game!")
-            print("♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪")
+            print("(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)")
             play_again_or_end = input("Type y to play again, or type n to stop. ")
             if play_again_or_end == "y" or play_again_or_end == "Y ":
                 new_board()
@@ -159,7 +142,7 @@ def game_play():
         didIWin()
         if win_condition == True:
             print("Congratulations, Player 2 won the Game!")
-            print("♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪")
+            print("(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)")
             play_again_or_end = input("Type y to play again, or type n to stop. ")
             if play_again_or_end == "y" or play_again_or_end == "Y":
                 new_board()
